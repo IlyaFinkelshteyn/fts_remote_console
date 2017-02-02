@@ -18,9 +18,12 @@ configuration:
   - release
 
 artifacts:
-  - path: projects\$(toolset)\bin\($platform)_$(configuration)
+  - path: projects\$(toolset)\bin\$(platform)_$(configuration)
     name: to_publish
 
 build:
   verbosity: minimal
   project: ./projects/$(toolset)/fts_console.sln
+  
+deploy_script:
+ - dir /s
