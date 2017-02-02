@@ -27,20 +27,3 @@ build:
 
 after_build:
   - 7z a fts_remote_console_windows.zip "%APPVEYOR_BUILD_FOLDER%\projects\$(toolset)\bin\($platform)_$(configuration)\example_game\" "%APPVEYOR_BUILD_FOLDER%\projects\$(toolset)\bin\($platform)_$(configuration)\fts_remote_console\"
-
-deploy:
-  - provider: S3
-    access_key_id:
-      secure: FtiBYbH6yZjcLA1oJdUNITGtgT3rrSQhnjuQO3lXZVI=
-    secret_access_key: 
-      secure: FfuP2INZ8TRnh6CjJH1v/blTOrs1vVDgYjpd6NIKT+UQtWv/y/KYaRrx4MTkQMId
-    region: us-east-1
-    set_public: true
-    bucket: forrestthewoods.binaries
-    folder: fts_remote_console
-    artifact: to_publish
-    on:
-      branch: master
-      platform: x64
-      toolset: vs2015
-      configuration: release
