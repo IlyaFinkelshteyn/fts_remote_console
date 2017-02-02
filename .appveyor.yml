@@ -26,7 +26,7 @@ build:
   project: ./projects/$(toolset)/fts_console.sln
 
 after_build:
-  - ps: IF ($env:platform -eq "Win32") {$env:makeplatform = "x32"} ELSE ($env:makeplatform = $env:platform)
+  - ps: IF ($env:platform -eq "Win32") {$env:makeplatform = "x32"} ELSE {$env:makeplatform = $env:platform}
   - 7z a fts_remote_console_windows.zip "projects\%toolset%\bin\%makeplatform%_%configuration%\example_game" "projects\%toolset%\bin\%makeplatform%_%configuration%\fts_remote_console"
 
 
