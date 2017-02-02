@@ -18,12 +18,9 @@ configuration:
   - release
 
 artifacts:
-  - path: fts_remote_console_windows.zip
+  - path: projects\$(toolset)\bin\($platform)_$(configuration)
     name: to_publish
 
 build:
   verbosity: minimal
   project: ./projects/$(toolset)/fts_console.sln
-
-after_build:
-  - 7z a fts_remote_console_windows.zip "%APPVEYOR_BUILD_FOLDER%\projects\$(toolset)\bin\($platform)_$(configuration)\example_game\" "%APPVEYOR_BUILD_FOLDER%\projects\$(toolset)\bin\($platform)_$(configuration)\fts_remote_console\"
