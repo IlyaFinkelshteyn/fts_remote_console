@@ -18,12 +18,14 @@ configuration:
   - release
 
 artifacts:
-  - path: projects\$(toolset)\bin\$(platform)_$(configuration)
+  - path: fts_remote_console_windows.zip
     name: to_publish
 
 build:
   verbosity: minimal
   project: ./projects/$(toolset)/fts_console.sln
-  
-deploy_script:
- - dir /s
+
+after_build:
+  - 7z a fts_remote_console_windows.zip "projects\%toolset%\bin\%platform%_%configuration%\example_game" "projects\%toolset%\bin\%platform%_%configuration%\fts_remote_console"
+
+
